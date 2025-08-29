@@ -1,0 +1,101 @@
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Cores login */
+
+:root {
+  --cor-box-direito: #ffffff; 
+  --cor-box-esquerdo: #F2B441; 
+  --cor-background-botão: #444444; 
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    color: #000000;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.login-box {
+    flex: 1;
+    background: #F2B441;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    font-weight: bolder;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #000000;
+    outline: none;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: bolder;
+}
+
+.remember input {
+    margin-right: 8px;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: #444444;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #2a2929;
+}
+
+.info-box {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.info-box img {
+    max-width: 90%;
+    margin-bottom: 20px;
+    border-radius: 12px;
+}
+
+
+
