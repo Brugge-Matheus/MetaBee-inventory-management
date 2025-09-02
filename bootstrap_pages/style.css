@@ -1,0 +1,10 @@
+:root {
+  --cor-box-direito: #ffffff; 
+  --cor-box-esquerdo: #F2B441; 
+  --cor-background-botão: #444444; 
+}
+
+#bg-form-main {
+    background-color: var(--cor-box-esquerdo);
+    border-bottom-left-radius: 40%;
+}
