@@ -1,0 +1,232 @@
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 20%;
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #fff;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 0 0 0;
+    z-index: 100;
+}
+
+.sidebar h3.bar-item {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 32px 32px;
+    letter-spacing: 2px;
+    color: #ffd600;
+}
+
+.bar-links {
+    display: block;
+    width: 82%;
+    padding: 16px 32px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-left: 4px solid transparent;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    margin-bottom: 8px;
+}
+
+.bar-links:hover, .bar-links:focus {
+    background: rgba(255, 214, 0, 0.1);
+    color: #ffd600;
+    border-left: 4px solid #ffd600;
+    outline: none;
+    width: 82%;
+}
+
+/* MAIN */
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.dashboard-cards {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.dashboard-card {
+    background: #fff;
+    color: #232526;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 24px 32px;
+    min-width: 180px;
+    flex: 1 1 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: box-shadow 0.2s;
+}
+.dashboard-card:hover {
+    box-shadow: 0 4px 16px rgba(33,37,41,0.12);
+}
+.dashboard-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.dashboard-card p {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.dashboard-charts {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+.dashboard-chart {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 16px 24px 24px 24px;
+    flex: 1 1 300px;
+    min-width: 280px;
+}
+.dashboard-chart {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #232526;
+}
+
+/* INVENTARIO */
+
+input{
+    margin-bottom: 16px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+
+}
+
+.estoque-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 32px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    overflow: hidden;
+}
+.estoque-table th, .estoque-table td {
+    padding: 14px 18px;
+    text-align: left;
+}
+.estoque-table th {
+    background: #232526;
+    color: #ffd600;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 2px solid #ffd600;
+}
+.estoque-table tr:nth-child(even) {
+    background: #f7f7f7;
+}
+.estoque-table tr:hover {
+    background: #fffde7;
+}
+.estoque-table td {
+    color: #232526;
+    font-size: 1rem;
+}
+
+/* CONTROLE DE ACESSO */
+
+.acesso-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.acesso-form {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 18px;
+}
+.acesso-form input {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 0;
+}
+.acesso-form button {
+    padding: 8px 18px;
+    background: #ffd600;
+    color: #232526;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.acesso-form button:hover {
+    background: #ffe066;
+}
+.acesso-filtro {
+    margin-bottom: 18px;
+}
+.acesso-filtro input {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+.acesso-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    overflow: hidden;
+    margin-bottom: 0;
+}
+.acesso-table th, .acesso-table td {
+    padding: 14px 18px;
+    text-align: left;
+}
+.acesso-table th {
+    background: #232526;
+    color: #ffd600;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 2px solid #ffd600;
+}
+.acesso-table tr:nth-child(even) {
+    background: #f7f7f7;
+}
+.acesso-table tr:hover {
+    background: #fffde7;
+}
+.acesso-table td {
+    color: #232526;
+    font-size: 1rem;
+}
+.remover-btn {
+    background: #ff5252;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+.remover-btn:hover {
+    background: #d32f2f;
+}
+

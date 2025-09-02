@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <h3 class="bar-item">Menu</h3>
+        <a href="index.html" class="bar-links">Dashboard</a>
+        <a href="inventario.html" class="bar-links">Inventário</a>
+        <a href="controle.html" class="bar-links">Controle de Acesso</a>
+    </div>
+
+    <div style="margin-left:20%">
+        
+        <section class="main">
+    <div class="acesso-container">
+        <h2>Controle de Acesso</h2>
+        <form id="form-usuario" class="acesso-form">
+            <div>
+                <label for="nome-usuario"><strong>Nome:</strong></label><br>
+                <input type="text" id="nome-usuario" required>
+            </div>
+            <div>
+                <label for="email-usuario"><strong>Email:</strong></label><br>
+                <input type="email" id="email-usuario" required>
+            </div>
+            <div>
+                <label for="senha-usuario"><strong>Senha:</strong></label><br>
+                <input type="password" id="senha-usuario" required>
+            </div>
+            <button type="submit">Adicionar Usuário</button>
+        </form>
+        <div class="acesso-filtro">
+            <label for="filtro-nome-usuario"><strong>Filtrar por nome:</strong></label>
+            <input type="text" id="filtro-nome-usuario" placeholder="Digite o nome do usuário...">
+        </div>
+        <table class="acesso-table" id="acesso-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Senha</th>
+                    <th>Data de Criação</th>
+                    <th>Data de Atualização</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function getUsuarios() {
+            return JSON.parse(localStorage.getItem('usuarios') || '[]');
+        }
+        function setUsuarios(usuarios) {
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+        }
+        function renderTabelaUsuarios() {
+            const usuarios = getUsuarios();
+            const tbody = document.querySelector('#acesso-table tbody');
+            tbody.innerHTML = '';
+            usuarios.forEach((usuario, idx) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${usuario.nome}</td><td>${usuario.email}</td><td>${usuario.senha}</td><td>${usuario.dataCriacao}</td><td>${usuario.dataAtualizacao}</td><td><button class='remover-btn' data-idx='${idx}'>Remover</button></td>`;
+                tbody.appendChild(tr);
+            });
+        }
+        // Filtro de busca por nome
+        const filtroUsuarioInput = document.getElementById('filtro-nome-usuario');
+        filtroUsuarioInput.addEventListener('input', function() {
+            const filtro = filtroUsuarioInput.value.toLowerCase();
+            const linhas = document.querySelectorAll('#acesso-table tbody tr');
+            linhas.forEach(linha => {
+                const nome = linha.children[0].textContent.toLowerCase();
+                linha.style.display = nome.includes(filtro) ? '' : 'none';
+            });
+        });
+        // Sistema de criação de usuário
+        document.getElementById('form-usuario').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome-usuario').value;
+            const email = document.getElementById('email-usuario').value;
+            const senha = document.getElementById('senha-usuario').value;
+            const data = new Date();
+            const dataCriacao = data.toLocaleString();
+            const dataAtualizacao = dataCriacao;
+            const usuarios = getUsuarios();
+            usuarios.push({nome, email, senha, dataCriacao, dataAtualizacao});
+            setUsuarios(usuarios);
+            renderTabelaUsuarios();
+            this.reset();
+        });
+        // Remover usuário
+        document.addEventListener('click', function(e) {
+            if(e.target.classList.contains('remover-btn')) {
+                const idx = e.target.getAttribute('data-idx');
+                const usuarios = getUsuarios();
+                usuarios.splice(idx, 1);
+                setUsuarios(usuarios);
+                renderTabelaUsuarios();
+            }
+        });
+        // Inicialização
+        renderTabelaUsuarios();
+    </script>
+            
+        </section>
+    </div>
+</body>
+</html>

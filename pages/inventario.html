@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <h3 class="bar-item">Menu</h3>
+        <a href="index.html" class="bar-links">Dashboard</a>
+        <a href="inventario.html" class="bar-links">Inventário</a>
+        <a href="controle.html" class="bar-links">Controle de Acesso</a>
+    </div>
+
+    <div style="margin-left:20%">
+
+    <section class="main">
+    <h2>Gerenciamento de Estoque</h2>
+    <label for="filtro-nome"><strong>Filtrar por nome:</strong></label>
+    <input type="text" id="filtro-nome" placeholder="Digite o nome do produto...">
+    <h2>Gerenciamento de Estoque</h2>
+    <table class="estoque-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Categoria ID</th>
+                <th>Preço (R$)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>PLA Branco</td>
+                <td>0</td>
+                <td>1</td>
+                <td>120,00</td>
+            </tr>
+            <tr>
+                <td>ABS Preto</td>
+                <td>0</td>
+                <td>2</td>
+                <td>135,00</td>
+            </tr>
+            <tr>
+                <td>PETG Azul</td>
+                <td>0</td>
+                <td>3</td>
+                <td>140,00</td>
+            </tr>
+            <tr>
+                <td>TPU Transparente</td>
+                <td>0</td>
+                <td>4</td>
+                <td>160,00</td>
+            </tr>
+            <tr>
+                <td>PLA</td>
+                <td>40</td>
+                <td>1</td>
+                <td>120,00</td>
+            </tr>
+            <tr>
+                <td>ABS</td>
+                <td>25</td>
+                <td>2</td>
+                <td>135,00</td>
+            </tr>
+            <tr>
+                <td>PETG</td>
+                <td>20</td>
+                <td>3</td>
+                <td>140,00</td>
+            </tr>
+            <tr>
+                <td>TPU</td>
+                <td>10</td>
+                <td>4</td>
+                <td>160,00</td>
+            </tr>
+            <tr>
+                <td>Nylon</td>
+                <td>5</td>
+                <td>5</td>
+                <td>180,00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const filtroInput = document.getElementById('filtro-nome');
+        filtroInput.addEventListener('input', function() {
+            const filtro = filtroInput.value.toLowerCase();
+            const linhas = document.querySelectorAll('.estoque-table tbody tr');
+            linhas.forEach(linha => {
+                const nome = linha.children[0].textContent.toLowerCase();
+                linha.style.display = nome.includes(filtro) ? '' : 'none';
+            });
+        });
+    </script>
+        <table>
+
+        </table>
+    </section>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <h3 class="bar-item">Menu</h3>
+        <a href="index.html" class="bar-links">Dashboard</a>
+        <a href="inventario.html" class="bar-links">Inventário</a>
+        <a href="controle.html" class="bar-links">Controle de Acesso</a>
+    </div>
+
+    <div style="margin-left:20%">
+
+    <section class="main">
+        <div class="dashboard">
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <h3>Materiais Atuais</h3>
+                    <p>1.250</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Produtos em Falta</h3>
+                    <p>12</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Materiais mais usados</h3>
+                    <p>35</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Saídas Hoje</h3>
+                    <p>28</p>
+                </div>
+            </div>
+                <div class="dashboard-charts">
+                    <div class="dashboard-chart">
+                        <h4>Tipos de Filamento (Estoque)</h4>
+                        <canvas id="filamentoChart"></canvas>
+                    </div>
+                    <div class="dashboard-chart">
+                        <h4>Produtos em Falta</h4>
+                        <canvas id="faltandoChart"></canvas>
+                    </div>
+                    <div class="dashboard-chart">
+                        <h4>Materiais Mais Usados</h4>
+                        <canvas id="usadosChart"></canvas>
+                    </div>
+                </div>
+        </div>
+    </section>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            // Tipos de filamento para impressora 3D
+            const filamentoCtx = document.getElementById('filamentoChart').getContext('2d');
+            new Chart(filamentoCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['PLA', 'ABS', 'PETG', 'TPU', 'Nylon'],
+                    datasets: [{
+                        data: [40, 25, 20, 10, 5],
+                        backgroundColor: ['#FFD600', '#FF7043', '#42A5F5', '#66BB6A', '#8D6E63'],
+                    }]
+                },
+                options: {
+                    plugins: { legend: { position: 'bottom' } },
+                    responsive: true,
+                }
+            });
+
+            // Produtos em falta
+            const faltandoCtx = document.getElementById('faltandoChart').getContext('2d');
+            new Chart(faltandoCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['PLA Branco', 'ABS Preto', 'PETG Azul', 'TPU Transparente'],
+                    datasets: [{
+                        label: 'Qtd. em Falta',
+                        data: [8, 5, 3, 2],
+                        backgroundColor: ['#FFD600', '#232526', '#42A5F5', '#BDBDBD'],
+                    }]
+                },
+                options: {
+                    plugins: { legend: { display: false } },
+                    responsive: true,
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+
+            // Materiais mais usados
+            const usadosCtx = document.getElementById('usadosChart').getContext('2d');
+            new Chart(usadosCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['PLA', 'ABS', 'PETG', 'TPU'],
+                    datasets: [{
+                        data: [50, 30, 15, 5],
+                        backgroundColor: ['#FFD600', '#FF7043', '#42A5F5', '#66BB6A'],
+                    }]
+                },
+                options: {
+                    plugins: { legend: { position: 'bottom' } },
+                    responsive: true,
+                }
+            });
+        </script>
+</div>
+</body>
+</html>
