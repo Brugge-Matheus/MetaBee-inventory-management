@@ -52,6 +52,27 @@
             <tbody>
             </tbody>
         </table>
+        <div id="modal-editar" class="acesso-modal" style="display:none;">
+            <form id="form-editar" class="acesso-form" style="background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:24px;border-radius:12px;max-width:400px;margin:auto;">
+                <h3>Editar Usuário</h3>
+                <input type="hidden" id="editar-idx">
+                <div>
+                    <label for="editar-nome">Nome:</label><br>
+                    <input type="text" id="editar-nome" required>
+                </div>
+                <div>
+                    <label for="editar-email">Email:</label><br>
+                    <input type="email" id="editar-email" required>
+                </div>
+                <div>
+                    <label for="editar-senha">Senha:</label><br>
+                    <input type="password" id="editar-senha" required>
+                </div>
+                <button type="submit">Salvar</button>
+                <button type="button" id="cancelar-edicao" style="background:#ccc;color:#232526;">Cancelar</button>
+            </form>
+        </div>
+        </table>
     </div>
     <script>
         function getUsuarios() {
@@ -66,10 +87,43 @@
             tbody.innerHTML = '';
             usuarios.forEach((usuario, idx) => {
                 const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${usuario.nome}</td><td>${usuario.email}</td><td>${usuario.senha}</td><td>${usuario.dataCriacao}</td><td>${usuario.dataAtualizacao}</td><td><button class='remover-btn' data-idx='${idx}'>Remover</button></td>`;
+                tr.innerHTML = `<td>${usuario.nome}</td><td>${usuario.email}</td><td>${usuario.senha}</td><td>${usuario.dataCriacao}</td><td>${usuario.dataAtualizacao}</td><td><button class='remover-btn' data-idx='${idx}'>Remover</button> <button class='editar-btn' data-idx='${idx}'>Editar</button></td>`;
                 tbody.appendChild(tr);
             });
         }
+        // Abrir modal de edição
+        document.addEventListener('click', function(e) {
+            if(e.target.classList.contains('editar-btn')) {
+                const idx = e.target.getAttribute('data-idx');
+                const usuarios = getUsuarios();
+                const usuario = usuarios[idx];
+                document.getElementById('editar-idx').value = idx;
+                document.getElementById('editar-nome').value = usuario.nome;
+                document.getElementById('editar-email').value = usuario.email;
+                document.getElementById('editar-senha').value = usuario.senha;
+                document.getElementById('modal-editar').style.display = 'block';
+            }
+        });
+        // Cancelar edição
+        document.getElementById('cancelar-edicao').addEventListener('click', function() {
+            document.getElementById('modal-editar').style.display = 'none';
+        });
+        // Salvar edição
+        document.getElementById('form-editar').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const idx = document.getElementById('editar-idx').value;
+            const nome = document.getElementById('editar-nome').value;
+            const email = document.getElementById('editar-email').value;
+            const senha = document.getElementById('editar-senha').value;
+            const usuarios = getUsuarios();
+            usuarios[idx].nome = nome;
+            usuarios[idx].email = email;
+            usuarios[idx].senha = senha;
+            usuarios[idx].dataAtualizacao = new Date().toLocaleString();
+            setUsuarios(usuarios);
+            renderTabelaUsuarios();
+            document.getElementById('modal-editar').style.display = 'none';
+        });
         // Filtro de busca por nome
         const filtroUsuarioInput = document.getElementById('filtro-nome-usuario');
         filtroUsuarioInput.addEventListener('input', function() {
