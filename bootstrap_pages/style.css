@@ -2,9 +2,57 @@
   --cor-box-direito: #ffffff; 
   --cor-box-esquerdo: #F2B441; 
   --cor-background-botão: #444444; 
+  --primary-hover-color: #a8771d;
+  --secondary-hover-color: #444444a9;
 }
 
+
+/**
+* Login form
+**/
 #bg-form-main {
-    background-color: var(--cor-box-esquerdo);
-    border-bottom-left-radius: 40%;
+  background-color: var(--cor-box-esquerdo);
+  border-bottom-left-radius: 40%;
+}
+
+/**
+* Sidebar
+**/
+
+.nav-link {
+  border-radius: 3px;
+}
+.nav-link:hover  {
+  background-color: var(--secondary-hover-color);
+}
+.custom-active {
+  background-color: #F2B441;
+}
+.active {
+  background-color: var(--primary-hover-color) !important;
+}
+
+
+/**
+* Overwriting bootstrap colors
+**/
+.btn-primary  {
+  --bs-btn-bg: #a8771d !important;
+  --bs-btn-border-color: #a8771d !important;
+  --bs-btn-hover-bg: #a8771d !important;
+  --bs-btn-hover-border-color: #a8771d !important;
+  --bs-btn-active-bg: #a8771d !important;
+  --bs-btn-active-border-color: ##a8771d;
+  --bs-btn-disabled-bg: #a8771d !important;
+  --bs-btn-disabled-border-color: #a8771d !important;
+}
+.btn-outline-primary {
+  --bs-btn-color: #a8771d !important;
+  --bs-btn-border-color: #a8771d !important;
+  --bs-btn-hover-bg: #a8771d !important;
+  --bs-btn-hover-border-color: #a8771d !important;
+  --bs-btn-active-bg: #a8771d !important;
+  --bs-btn-active-border-color: #a8771d !important;
+  --bs-btn-disabled-color: #a8771d !important;
+  --bs-btn-disabled-border-color: #a8771d !important;
 }
