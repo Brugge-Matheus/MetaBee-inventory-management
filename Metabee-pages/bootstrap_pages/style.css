@@ -1,7 +1,7 @@
 :root {
-  --cor-box-direito: #ffffff; 
-  --cor-box-esquerdo: #F2B441; 
-  --cor-background-botão: #444444; 
+  --cor-box-direito: #ffffff;
+  --cor-box-esquerdo: #F2B441;
+  --cor-background-botão: #444444;
   --primary-hover-color: #a8771d;
   --secondary-hover-color: #444444a9;
 }
@@ -41,7 +41,7 @@
   --bs-btn-hover-bg: #a8771d !important;
   --bs-btn-hover-border-color: #a8771d !important;
   --bs-btn-active-bg: #a8771d !important;
-  --bs-btn-active-border-color: ##a8771d;
+  --bs-btn-active-border-color: #a8771d;
   --bs-btn-disabled-bg: #a8771d !important;
   --bs-btn-disabled-border-color: #a8771d !important;
 }
